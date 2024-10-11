@@ -1,4 +1,7 @@
 package com.codergm.productser.exception
 
-class ProductCustomException {
+import com.codergm.productser.domain.ProductErrorCode
+
+class ProductCustomException(message: String,val errorCode: ProductErrorCode): RuntimeException(message) {
+
 }
