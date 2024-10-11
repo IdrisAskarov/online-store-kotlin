@@ -1,4 +1,4 @@
-package com.codergm.ProductService
+package com.codergm.productser
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
