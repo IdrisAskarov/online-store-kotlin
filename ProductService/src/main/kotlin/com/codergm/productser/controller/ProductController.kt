@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.*
 import org.springframework.web.bind.annotation.*
-import util.toProductDto
-import util.toProductEntity
+import com.codergm.productser.util.toProductDto
+import com.codergm.productser.util.toProductEntity
 
 @RestController
 @RequestMapping("/product")

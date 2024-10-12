@@ -1,4 +1,4 @@
-package util
+package com.codergm.productser.util
 
 import com.codergm.productser.domain.dto.ProductDto
 import com.codergm.productser.domain.entity.ProductEntity
