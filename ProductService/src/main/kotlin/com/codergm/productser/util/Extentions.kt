@@ -3,6 +3,7 @@ package com.codergm.productser.util
 import com.codergm.productser.domain.model.dto.ProductDto
 import com.codergm.productser.domain.entity.ProductEntity
 import com.codergm.productser.domain.model.ErrorCode
+import com.codergm.productser.exception.ProductCreationException
 import com.codergm.productser.exception.ProductInsufficientQuantityException
 
 fun ProductDto.toProductEntity() = ProductEntity(
@@ -26,6 +27,13 @@ fun ProductEntity.checkSufficientQuantity(quantity: Int) {
     )
 }
 
-fun ProductEntity.decreaseQuantity(quantity: Int){
+fun ProductEntity.reduceQuantity(quantity: Int) {
     this.quantity -= quantity
+}
+
+fun ProductEntity.nonNullId(): Long {
+    return this.productId ?: throw ProductCreationException(
+        ErrorCode.PRODUCT_NOT_CREATED.msg(),
+        ErrorCode.PRODUCT_NOT_CREATED
+    )
 }
