@@ -1,8 +1,9 @@
 package com.codergm.productser.controller
 
-import com.codergm.productser.domain.ProductErrorCode
-import com.codergm.productser.domain.dto.ProductDto
-import com.codergm.productser.exception.ProductCustomException
+import com.codergm.productser.domain.model.ErrorCode
+import com.codergm.productser.domain.model.dto.ProductDto
+import com.codergm.productser.exception.ProductNotFoundException
+
 import com.codergm.productser.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -25,9 +26,20 @@ class ProductController(private val productService: ProductService) {
     fun getProductById(@PathVariable("id") productId: Long): ResponseEntity<ProductDto> {
         val product = productService.getProductById(productId)
         return product?.let { ok(product.toProductDto()) }
-            ?: throw ProductCustomException(
-                "Product with given id: $productId not found",
-                ProductErrorCode.PRODUCT_NOT_FOUND
+            ?: throw ProductNotFoundException(
+                ErrorCode.PRODUCT_NOT_FOUND.msg(),
+                ErrorCode.PRODUCT_NOT_FOUND
             )
+    }
+
+
+    @PutMapping("/reduce-quantity/{id}")
+    fun reduceQuantity(
+        @PathVariable("id") productId: Long,
+        @RequestParam quantity: Int
+    ): ResponseEntity<Unit> {
+
+        productService.reduceQuantity(productId, quantity)
+        return ok().build()
     }
 }

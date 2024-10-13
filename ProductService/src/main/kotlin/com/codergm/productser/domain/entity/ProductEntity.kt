@@ -10,5 +10,5 @@ data class ProductEntity(
     val productId: Long?,
     val productName: String,
     val price: Double,
-    val quantity: Int
+    var quantity: Int
 )

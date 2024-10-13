@@ -1,4 +1,4 @@
-package com.codergm.productser.domain.dto
+package com.codergm.productser.domain.model.dto
 
 
 data class ProductDto(
