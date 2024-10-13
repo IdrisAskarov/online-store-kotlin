@@ -28,6 +28,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.cloud:spring-cloud-starter")
+	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("io.github.microutils:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	runtimeOnly("org.postgresql:postgresql")
