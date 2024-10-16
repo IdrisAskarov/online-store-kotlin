@@ -34,11 +34,7 @@ class ProductController(private val productService: ProductService) {
 
 
     @PutMapping("/reduce-quantity/{id}")
-    fun reduceQuantity(
-        @PathVariable("id") productId: Long,
-        @RequestParam quantity: Int
-    ): ResponseEntity<Unit> {
-
+    fun reduceQuantity(@PathVariable("id") productId: Long, @RequestParam quantity: Int): ResponseEntity<Unit> {
         productService.reduceQuantity(productId, quantity)
         return ok().build()
     }

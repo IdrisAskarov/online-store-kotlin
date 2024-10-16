@@ -22,8 +22,8 @@ fun ProductEntity.toProductDto() = ProductDto(
 
 fun ProductEntity.checkSufficientQuantity(quantity: Int) {
     if (this.quantity < quantity) throw ProductInsufficientQuantityException(
-        ErrorCode.PRODUCT_INSUFFICIENT.msg(),
-        ErrorCode.PRODUCT_INSUFFICIENT
+        ErrorCode.PRODUCT_INSUFFICIENT_QUANTITY.msg(),
+        ErrorCode.PRODUCT_INSUFFICIENT_QUANTITY
     )
 }
 
