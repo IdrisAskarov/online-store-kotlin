@@ -1,4 +1,4 @@
-package com.codergm.productser.domain.model
+package org.codergm.ostore.common.model
 
 enum class ErrorCode {
     PRODUCT_NOT_FOUND{
@@ -12,7 +12,11 @@ enum class ErrorCode {
     },
     PRODUCT_UNPREDICTED{
         override fun msg() = "Unpredicted error"
+    },
+    ORDER_NOT_PLACED{
+        override fun msg() = "Failed to place order"
     };
+
 
     abstract fun msg(): String
 }

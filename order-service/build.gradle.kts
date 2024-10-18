@@ -16,11 +16,13 @@ java {
 }
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
 extra["springCloudVersion"] = "2023.0.3"
 extra["kotlinLoggingVersion"] = "3.0.5"
+extra["commonModelVersion"] = "1.0.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -32,6 +34,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	implementation("io.github.microutils:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
+	implementation("com.codergm:ostore-common-model:${property("commonModelVersion")}")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

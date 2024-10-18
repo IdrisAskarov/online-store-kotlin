@@ -1,6 +1,6 @@
 package com.codergm.orderser.exception
 
-import com.codergm.orderser.domain.model.ErrorCode
+import org.codergm.ostore.common.model.ErrorCode
 
-class OrderPlacingException(message: String, val errorCode: ErrorCode): Exception(message) {
+class OrderPlacingException(message: String, val errorCode: ErrorCode, val httpStatusCode: Int?): RuntimeException(message) {
 }

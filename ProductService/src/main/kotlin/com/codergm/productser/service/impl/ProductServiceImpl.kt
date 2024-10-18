@@ -1,10 +1,10 @@
 package com.codergm.productser.service.impl
 
-import com.codergm.productser.domain.model.ErrorCode
 import com.codergm.productser.domain.entity.ProductEntity
 import com.codergm.productser.repository.ProductRepository
 import com.codergm.productser.service.ProductService
 import com.codergm.productser.util.*
+import org.codergm.ostore.common.model.ErrorCode
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
