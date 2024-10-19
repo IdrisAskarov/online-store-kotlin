@@ -23,6 +23,7 @@ repositories {
 extra["springCloudVersion"] = "2023.0.3"
 extra["kotlinLoggingVersion"] = "3.0.5"
 extra["commonModelVersion"] = "1.0.0"
+extra["feignMicrometerVersion"] = "11.8"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -35,6 +36,10 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	implementation("io.github.microutils:kotlin-logging-jvm:${property("kotlinLoggingVersion")}")
 	implementation("com.codergm:ostore-common-model:${property("commonModelVersion")}")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.micrometer:micrometer-tracing-bridge-brave")
+	implementation("io.zipkin.reporter2:zipkin-reporter-brave")
+	implementation("io.github.openfeign:feign-micrometer:${property("feignMicrometerVersion")}")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
