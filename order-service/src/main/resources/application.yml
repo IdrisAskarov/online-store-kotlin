@@ -19,21 +19,3 @@ spring:
     properties:
       hibernate:
         default_schema: orderdb
-  zipkin:
-    base-url: http://localhost:9411/
-    enabled: true
-
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-  endpoints:
-    web:
-      exposure:
-        include: "prometheus,health,info"
-    prometheus:
-      enabled: true
-logging:
-  level:
-    io.micrometer.tracing: INFO
-
