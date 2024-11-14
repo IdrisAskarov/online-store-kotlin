@@ -1,3 +1,7 @@
 package com.codergm.paymentser.service
 
-interface PaymentService {}
+import com.codergm.paymentser.domain.entity.TransactionDetailsEntity
+
+interface PaymentService {
+    fun doPayment(transactionDetailsEntity: TransactionDetailsEntity): Long?
+}

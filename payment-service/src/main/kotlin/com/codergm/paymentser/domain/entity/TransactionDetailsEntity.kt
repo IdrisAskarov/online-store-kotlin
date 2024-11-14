@@ -1,5 +1,6 @@
 package com.codergm.paymentser.domain.entity
 
+import com.codergm.paymentser.domain.model.PaymentMode
 import jakarta.persistence.*
 import java.time.Instant
 
@@ -8,10 +9,10 @@ import java.time.Instant
 data class TransactionDetailsEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long,
+    val id: Long?,
     val orderId: Long,
     @Column(name = "MODE")
-    val paymentMode: String,
+    val paymentMode: PaymentMode,
     val referenceNumber: String,
     val paymentDate: Instant,
     @Column(name = "status")
