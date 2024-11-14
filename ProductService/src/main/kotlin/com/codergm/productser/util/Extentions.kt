@@ -3,7 +3,8 @@ package com.codergm.productser.util
 import com.codergm.productser.domain.model.dto.ProductDto
 import com.codergm.productser.domain.entity.ProductEntity
 import org.codergm.ostore.common.exception.product.ProductException
-import org.codergm.ostore.common.model.ErrorCode
+import org.codergm.ostore.common.model.product.ProductErrorCode
+
 import org.springframework.http.HttpStatus
 
 fun ProductDto.toProductEntity() = ProductEntity(
@@ -22,8 +23,8 @@ fun ProductEntity.toProductDto() = ProductDto(
 
 fun ProductEntity.checkSufficientQuantity(quantity: Int) {
     if (this.quantity < quantity) throw ProductException(
-        ErrorCode.PRODUCT_INSUFFICIENT_QUANTITY.msg(),
-        ErrorCode.PRODUCT_INSUFFICIENT_QUANTITY,
+        ProductErrorCode.PRODUCT_INSUFFICIENT_QUANTITY.msg(),
+        ProductErrorCode.PRODUCT_INSUFFICIENT_QUANTITY,
         HttpStatus.BAD_REQUEST.value()
     )
 }
@@ -34,8 +35,8 @@ fun ProductEntity.reduceQuantity(quantity: Int) {
 
 fun ProductEntity.nonNullId(): Long {
     return this.productId ?: throw ProductException(
-        ErrorCode.PRODUCT_NOT_CREATED.msg(),
-        ErrorCode.PRODUCT_NOT_CREATED,
+        ProductErrorCode.PRODUCT_NOT_CREATED.msg(),
+        ProductErrorCode.PRODUCT_NOT_CREATED,
         HttpStatus.NOT_FOUND.value()
     )
 }

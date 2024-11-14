@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import feign.Response
 import feign.codec.ErrorDecoder
 import org.codergm.ostore.common.exception.product.ProductException
-import org.codergm.ostore.common.model.ErrorCode
-import org.codergm.ostore.common.model.ErrorResponse
+import org.codergm.ostore.common.model.order.OrderErrorCode
+import org.codergm.ostore.common.model.product.ProductErrorResponse
 
 import org.springframework.http.HttpStatus
 
@@ -17,17 +17,17 @@ open class CustomErrorDecoder : ErrorDecoder {
         return try {
             val body = response?.body()?.asInputStream()?.bufferedReader().use { it?.readText() }
             val objectMapper = ObjectMapper()
-            val errorResponse: ErrorResponse = objectMapper.readValue(body, ErrorResponse::class.java)
+            val productErrorResponse: ProductErrorResponse = objectMapper.readValue(body, ProductErrorResponse::class.java)
 
             ProductException(
-                errorResponse.errorMessage,
-                errorResponse.errorCode,
-                errorResponse.httpStatusCode
+                productErrorResponse.errorMessage,
+                productErrorResponse.errorCode,
+                productErrorResponse.httpStatusCode
             )
         } catch (e: Exception) {
             OrderPlacingException(
                 e.message!!,
-                ErrorCode.ORDER_NOT_PLACED,
+                OrderErrorCode.ORDER_NOT_PLACED,
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
             )
         }

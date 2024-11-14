@@ -1,6 +1,6 @@
 package com.codergm.orderser.domain.model
 
-import org.codergm.ostore.common.model.PaymentMode
+import org.codergm.ostore.common.model.payment.PaymentMode
 
 data class OrderRequest(
     val id: Long? = null,

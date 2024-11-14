@@ -19,4 +19,15 @@ class OrderServiceLoggingAspect {
         logger.info { "Saving order: $order" }
         return joinPoint.proceed()
     }
+
+    @Around("execution(* com.codergm.orderser.service.impl.OrderServiceImpl.getOrderDetails(..))")
+    fun orderDetailsLogging(joinPoint: ProceedingJoinPoint): Any?{
+        val orderId = joinPoint.args[0] as Long
+
+        logger.info { "Getting order details for Order Id : $orderId" }
+
+        val result = joinPoint.proceed()
+
+        return result
+    }
 }

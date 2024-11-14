@@ -1,5 +1,6 @@
 package org.codergm.ostore.common.exception.product
 
-import org.codergm.ostore.common.model.ErrorCode
+import org.codergm.ostore.common.model.product.ProductErrorCode
 
-class ProductException(message: String, val errorCode: ErrorCode, val httpStatusCode: Int?): RuntimeException(message)
+
+class ProductException(message: String, val errorCode: ProductErrorCode, val httpStatusCode: Int?): RuntimeException(message)

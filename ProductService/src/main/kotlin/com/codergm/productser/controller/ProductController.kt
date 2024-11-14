@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*
 import com.codergm.productser.util.toProductDto
 import com.codergm.productser.util.toProductEntity
 import org.codergm.ostore.common.exception.product.ProductException
-import org.codergm.ostore.common.model.ErrorCode
+import org.codergm.ostore.common.model.product.ProductErrorCode
+
 
 @RestController
 @RequestMapping("/product")
@@ -27,8 +28,8 @@ class ProductController(private val productService: ProductService) {
         val product = productService.getProductById(productId)
         return product?.let { ok(product.toProductDto()) }
             ?: throw ProductException(
-                ErrorCode.PRODUCT_NOT_FOUND.msg(),
-                ErrorCode.PRODUCT_NOT_FOUND,
+                ProductErrorCode.PRODUCT_NOT_FOUND.msg(),
+                ProductErrorCode.PRODUCT_NOT_FOUND,
                 HttpStatus.NOT_FOUND.value()
             )
     }
