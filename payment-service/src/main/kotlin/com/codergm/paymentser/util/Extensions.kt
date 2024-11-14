@@ -1,7 +1,8 @@
 package com.codergm.paymentser.util
 
 import com.codergm.paymentser.domain.entity.TransactionDetailsEntity
-import com.codergm.paymentser.domain.model.TransactionDetailsDto
+import org.codergm.ostore.common.model.payment.TransactionDetailsDto
+
 import java.time.Instant
 
 fun TransactionDetailsDto.toTransactionDetailsEntity() = TransactionDetailsEntity(

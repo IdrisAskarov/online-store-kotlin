@@ -1,7 +1,7 @@
 package com.codergm.paymentser.domain.entity
 
-import com.codergm.paymentser.domain.model.PaymentMode
 import jakarta.persistence.*
+import org.codergm.ostore.common.model.PaymentMode
 import java.time.Instant
 
 @Entity
@@ -11,7 +11,12 @@ data class TransactionDetailsEntity(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long?,
     val orderId: Long,
-    @Column(name = "MODE")
+
+    @Enumerated(EnumType.STRING)
+    @Column(
+        name = "MODE",
+        columnDefinition = "VARCHAR(20) CHECK (MODE IN ('CASH', 'PAYPAL', 'DEBIT_CARD', 'CREDIT_CARD', 'APPLE_PAY'))"
+    )
     val paymentMode: PaymentMode,
     val referenceNumber: String,
     val paymentDate: Instant,

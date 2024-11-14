@@ -18,7 +18,8 @@ data class OrderEntity(
     val orderDate: Instant,
 
     @Enumerated(EnumType.STRING)
-    val orderStatus: OrderStatus,
+    @Column(columnDefinition = "VARCHAR(20) CHECK (order_status IN ('CREATED', 'PLACED', 'PAYMENT_FAILED'))")
+    var orderStatus: OrderStatus,
 
     val amount: Double
 )

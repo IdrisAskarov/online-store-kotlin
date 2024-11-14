@@ -1,8 +1,8 @@
 package com.codergm.paymentser.controller
 
-import com.codergm.paymentser.domain.model.TransactionDetailsDto
 import com.codergm.paymentser.service.PaymentService
 import com.codergm.paymentser.util.toTransactionDetailsEntity
+import org.codergm.ostore.common.model.payment.TransactionDetailsDto
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.ok
 import org.springframework.web.bind.annotation.PostMapping

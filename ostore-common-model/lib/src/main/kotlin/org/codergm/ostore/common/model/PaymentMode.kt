@@ -1,4 +1,4 @@
-package com.codergm.paymentser.domain.model
+package org.codergm.ostore.common.model
 
 enum class PaymentMode {
     CASH,
