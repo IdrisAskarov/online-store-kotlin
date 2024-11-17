@@ -1,8 +1,9 @@
 package com.codergm.productser.util
 
-import com.codergm.productser.domain.model.dto.ProductDto
+
 import com.codergm.productser.domain.entity.ProductEntity
 import org.codergm.ostore.common.exception.product.ProductException
+import org.codergm.ostore.common.model.product.ProductDto
 import org.codergm.ostore.common.model.product.ProductErrorCode
 
 import org.springframework.http.HttpStatus

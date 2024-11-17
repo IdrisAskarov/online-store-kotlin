@@ -5,6 +5,7 @@ import com.codergm.orderser.domain.entity.OrderEntity
 import com.codergm.orderser.domain.model.OrderRequest
 import com.codergm.orderser.domain.model.OrderStatus
 import org.codergm.ostore.common.model.payment.TransactionDetailsDto
+import org.codergm.ostore.common.model.product.ProductDto
 import java.time.Instant
 
 fun OrderRequest.toOrderEntity() = OrderEntity(
@@ -24,11 +25,12 @@ fun OrderRequest.toTransactionDetailsDto(orderId: Long) = TransactionDetailsDto(
 
 )
 
-fun OrderEntity.toOrderDto() = OrderDto(
+fun OrderEntity.toOrderDto(productDto: ProductDto?) = OrderDto(
     id = this.id,
     productId = this.productId,
     amount = this.amount,
     orderDate = this.orderDate,
     orderStatus = this.orderStatus,
-    quantity = this.quantity
+    quantity = this.quantity,
+    productDetails = productDto
 )

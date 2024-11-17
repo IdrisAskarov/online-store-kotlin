@@ -6,5 +6,5 @@ interface OrderService {
 
     fun save(order: OrderEntity): OrderEntity
 
-    fun getOrderDetails(orderId: Long): OrderEntity
+    fun findOrderById(orderId: Long): OrderEntity
 }

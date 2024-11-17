@@ -1,5 +1,4 @@
-package com.codergm.productser.domain.model.dto
-
+package org.codergm.ostore.common.model.product
 
 data class ProductDto(
     val productId: Long?,

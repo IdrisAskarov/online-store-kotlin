@@ -14,7 +14,7 @@ class OrderServiceImpl(private val orderRepository: OrderRepository): OrderServi
         return orderRepository.save(order)
     }
 
-    override fun getOrderDetails(orderId: Long): OrderEntity {
+    override fun findOrderById(orderId: Long): OrderEntity {
         val orderEntity = orderRepository.findByIdOrNull(orderId)
 
         checkNotNull(orderEntity) { OrderErrorCode.ORDER_NOT_FOUND }
