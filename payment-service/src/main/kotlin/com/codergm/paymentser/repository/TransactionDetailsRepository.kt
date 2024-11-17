@@ -5,4 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface TransactionDetailsRepository: JpaRepository<TransactionDetailsEntity, Long>
+interface TransactionDetailsRepository: JpaRepository<TransactionDetailsEntity, Long>{
+
+    fun findByOrderId(orderId: Long): TransactionDetailsEntity
+}

@@ -21,4 +21,12 @@ class PaymentServiceLoggingAspect {
         logger.info { "Transaction Completed with Id ${transactionDetailsEntity.id}" }
         return result
     }
+
+    @Around("execution(* com.codergm.paymentser.service.impl.PaymentServiceImpl.getOrderPaymentDetails(..))")
+    fun getOrderPaymentDetails(joinPoint: ProceedingJoinPoint): Any {
+        val orderId = joinPoint.args[0] as Long
+        logger.info { "Getting payment details for the order id ${orderId}" }
+        val result = joinPoint.proceed()
+        return result
+    }
 }

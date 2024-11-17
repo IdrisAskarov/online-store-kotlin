@@ -12,4 +12,11 @@ class PaymentServiceImpl(private val transactionDetailsRepository: TransactionDe
         transactionDetailsRepository.save(transactionDetailsEntity)
         return transactionDetailsEntity.id
     }
+
+    override fun getOrderPaymentDetails(orderId: Long): TransactionDetailsEntity {
+        val transactionDetailsEntity = transactionDetailsRepository.findByOrderId(orderId)
+
+        return transactionDetailsEntity
+
+    }
 }

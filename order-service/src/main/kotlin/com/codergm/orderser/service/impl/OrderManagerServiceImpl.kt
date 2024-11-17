@@ -11,6 +11,7 @@ import com.codergm.orderser.util.toOrderDto
 import com.codergm.orderser.util.toOrderEntity
 import com.codergm.orderser.util.toTransactionDetailsDto
 import mu.KotlinLogging
+import org.codergm.ostore.common.model.payment.TransactionDetailsDto
 import org.codergm.ostore.common.model.product.ProductDto
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
@@ -50,9 +51,17 @@ class OrderManagerServiceImpl(
 
         logger.info { "Invoking Product service to fetch the product for productId: ${orderEntity.productId}" }
 
-        val productDetails = restTemplate.getForObject("http://product-service/product/${orderEntity.productId}"
-            , ProductDto::class.java)
+        val productDetails = restTemplate.getForObject(
+            "http://product-service/product/${orderEntity.productId}",
+            ProductDto::class.java
+        )
 
-        return orderEntity.toOrderDto(productDetails)
+        logger.info { "Getting payment information from the Payment Service" }
+        val paymentDetails = restTemplate.getForObject(
+            "http://payment-service/payment/${orderEntity.id}",
+            TransactionDetailsDto::class.java
+        )
+
+        return orderEntity.toOrderDto(productDetails, paymentDetails)
     }
 }

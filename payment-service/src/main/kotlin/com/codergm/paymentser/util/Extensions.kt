@@ -14,3 +14,13 @@ fun TransactionDetailsDto.toTransactionDetailsEntity() = TransactionDetailsEntit
     paymentDate = Instant.now(),
     paymentStatus = "SUCCESS"
 )
+
+fun TransactionDetailsEntity.toTransactionDetailsDto() = TransactionDetailsDto(
+    paymentId = this.id,
+    orderId = this.orderId,
+    amount = this.amount,
+    paymentMode = this.paymentMode,
+    referenceNumber = this.referenceNumber,
+    paymentDate = this.paymentDate,
+    paymentStatus = this.paymentStatus
+)

@@ -21,16 +21,21 @@ fun OrderRequest.toTransactionDetailsDto(orderId: Long) = TransactionDetailsDto(
     orderId = orderId,
     amount = this.totalAmount,
     paymentMode = this.paymentMode,
-    referenceNumber = ""
+    referenceNumber = "",
+    paymentId = null,
+    paymentDate = null,
+    paymentStatus = null
+
 
 )
 
-fun OrderEntity.toOrderDto(productDto: ProductDto?) = OrderDto(
+fun OrderEntity.toOrderDto(productDto: ProductDto?, paymentDetails: TransactionDetailsDto?) = OrderDto(
     id = this.id,
     productId = this.productId,
     amount = this.amount,
     orderDate = this.orderDate,
     orderStatus = this.orderStatus,
     quantity = this.quantity,
-    productDetails = productDto
+    productDetails = productDto,
+    paymentDetails = paymentDetails
 )
