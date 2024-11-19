@@ -6,8 +6,19 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class FallbackController {
-    @GetMapping("/fallback")
-    fun fallback(): ResponseEntity<String> {
-        return ResponseEntity.ok("Fallback triggered!")
+
+    @GetMapping("/orderServiceFallBack")
+    fun orderFallback(): ResponseEntity<String> {
+        return ResponseEntity.ok("Order Service is down!")
+    }
+
+    @GetMapping("/paymentServiceFallBack")
+    fun paymentFallback(): ResponseEntity<String> {
+        return ResponseEntity.ok("Payment Service is down!")
+    }
+
+    @GetMapping("/productServiceFallBack")
+    fun productFallback(): ResponseEntity<String> {
+        return ResponseEntity.ok("Product Service is down!")
     }
 }
