@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: order-service
+    name: ORDER-SERVICE
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
   datasource:

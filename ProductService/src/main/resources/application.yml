@@ -2,7 +2,7 @@ server:
   port: 8083
 spring:
   application:
-    name: product-service
+    name: PRODUCT-SERVICE
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
   datasource:

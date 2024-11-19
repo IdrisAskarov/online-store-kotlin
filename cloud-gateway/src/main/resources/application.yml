@@ -1,0 +1,34 @@
+server:
+  port: 9090
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+  cloud:
+    gateway:
+      routes:
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+        - id: PRODUCT-SERVICE
+          uri: lb://product-service
+          predicates:
+            - Path=/product/**
+        - id: PAYMENT-SERVICE
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
